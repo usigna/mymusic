@@ -11,8 +11,60 @@
 </head>
 
 <body>
+  <main class="main">
+    <section class="section">
+      <div class="section__wrapper wrapper">
+        <h2 class="title">Wprowadź nowego kontrahenta</h2>
+        <form class="form">
+          <div class="left">
+            <div class="form__item">
+              <label for="name">Imię:</label>
+              <input type="text" id="name" class="input" placeholder="np. Maciej"  required />
+              <!-- <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawne imię, np. Maciej</p> -->
+            </div>
+            <div class="form__item">
+              <label for="surname">Nazwisko:</label>
+              <input type="text" id="surname" class="input" placeholder="np. Kowalski" required />
+              <!-- <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawne nazwisko, np. Kowalski</p> -->
+            </div>
+            <div class="form__item">
+              <p>Typ konta:</p>
+              <div class="radio">
+                <input type="radio" id="person" name="type" value="person" checked> <label for="person">Osoba</label>
+                <input type="radio" id="company" name="type" value="company"> <label for="company">Firma</label>
+              </div>
+              <p>Numer identyfikacyjny:</p>
+              <div class="idnumber idnumber--pesel show">
+                <label for="pesel"><span class="text-transform">Pesel</span></label>
+                <input type="number" id="pesel" placeholder="np. 98102087075" class="input" maxlength="11" minlength="11" required/>
+                <!-- <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawny PESEL (11 cyfr)</p> -->
+              </div>
+              <div class="idnumber idnumber--nip hide">
+                <label for="nip"><span class="text-transform">Nip</span> (tylko cyfry)</label>
+                <input type="number" id="nip" placeholder="np. 1234563218" class="input" maxlength="10" minlength="10" required />
+                <!-- <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawny NIP (10 cyfr, bez myślników)</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="image-preview">
+              <img src="" alt="" class="image-preview__image" />
+              <span class="image-preview__default-text">podgląd</span>
+            </div>
+            <div class="form__item">
+              <label for="file">Wgraj zdjęcie:</label>
+              <input type="file" accept="image/jpg, image/jpeg" id="file" class="input--file" />
+            </div>
+          </div>
+          <div class="button">
+            <button class="btn" type="submit">Dodaj nowego kontrahenta</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-  <script src="https://kit.fontawesome.com/ab5a3ecad3.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://kit.fontawesome.com/ab5a3ecad3.js" crossorigin="anonymous"></script> -->
   <script src="js/app.js"></script>
 </body>
 </html>

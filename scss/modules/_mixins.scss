@@ -13,8 +13,3 @@
   -ms-flex-pack: $justifyContent;
   justify-content: $justifyContent;
 }
-
-@mixin gradient {
-  background: rgb(247,247,247);
-  background: linear-gradient(130deg, rgba(247,247,247,1) 0%, rgba(226,230,233,1) 100%); 
-}
