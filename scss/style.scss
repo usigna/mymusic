@@ -132,10 +132,16 @@ body {
 
 /* form */
 .form {
-  width: 80%;
+  width: 90%;
+  text-transform: uppercase;
   @include flex(row, flex-start, flex-start);
   flex-wrap: wrap;
+
+  @media screen and (min-width: $largeWidth) {
+    width: 80%;
+  }
 }
+
 .text-wrapper {
   width: 100%;
   margin-bottom: 1.5rem;
@@ -146,10 +152,39 @@ body {
   }
 }
 
+.form__item,
+.idnumber {
+  @include flex(column, flex-start, flex-start);
+  margin-bottom: 0.5rem;
+  @media screen and (min-width: $largeWidth) {
+    @include flex(row, flex-start, flex-start);
+    label {
+      width: 25%;
+    }
+    input {
+      width: 75%;
+    }
+  }
+}
+
+.radio {
+  label {
+    margin-right: 1rem;
+  }
+}
+
+.error {
+  display: none;
+}
+
 .image-wrapper {
   width: 25%;
   padding: 2.5rem 0 2.5rem 2.5rem;
-  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  @media screen and (min-width: $largeWidth) {
+    margin-left: 1.5rem;
+    margin-bottom: 0;
+  }
 }
 
 .image-preview {
@@ -185,6 +220,7 @@ body {
   color: $whiteColor;
   background: $greyColor;
   cursor: pointer;
+  border:  2px solid transparent;
   transition: background 0.2s;
 }
 
@@ -192,6 +228,11 @@ body {
 .file:focus + label,
 .file.has-focus + label {
   background: $blackColor;
+}
+
+.file:focus + label,
+.file.has-focus + label {
+  border-color:blue;
 }
 
 .label-file {
