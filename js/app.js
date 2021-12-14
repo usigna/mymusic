@@ -1,3 +1,69 @@
+function showBtnAnimation() {
+  const btn = document.querySelector('.btn');
+
+  btn.addEventListener('mouseover', function(e) {
+    let x = e.clientX - e.target.offsetLeft;
+    let y = e.clientY - e.target.offsetTop;
+
+    let ripples = document.createElement('span');
+    ripples.style.left = x + 'px';
+    ripples.style.top = y + 'px';
+    this.appendChild(ripples);
+      
+    setTimeout(() => {
+      ripples.remove();
+    }, 1000);
+  });
+
+  // buttons.forEach(btn => {
+  //   btn.addEventListener('mouseover', function(e) {
+  //     let x = e.clientX - e.target.offsetLeft;
+  //     let y = e.clientY - e.target.offsetTop;
+    
+  //     let ripples = document.createElement('span');
+  //     ripples.style.left = x + 'px';
+  //     ripples.style.top = y + 'px';
+  //     this.appendChild(ripples);
+      
+  //     setTimeout(() => {
+  //       ripples.remove();
+  //     }, 1000);
+  //   });
+  // })
+}
+
+function showImage() {
+  const inputFile = document.querySelector('.file');
+  const imagePreview = document.querySelector('.image-preview__image');
+  // const name = document.getElementById('name').value;
+  // const surname = document.getElementById('surname').value;
+
+  inputFile.addEventListener('change', function() {
+    const file = this.files[0];
+    // const fullName = name + " " + surname;
+
+    if(file) {
+      const reader = new FileReader();
+      imagePreview.style.display = 'block';
+
+      reader.addEventListener('load', function() {
+        imagePreview.setAttribute('src', this.result);
+        // imagePreview.setAttribute('alt', fullName);
+      });
+
+      reader.readAsDataURL(file);
+    } else {
+      imagePreview.style.display = null;
+      imagePreview.setAttribute('src', '');
+      // imagePreview.setAttribute('alt', '');
+    }
+  });
+}
+
+
+
+
+
 function show(name) {
   document.querySelector(name).classList.add('show');
   document.querySelector(name).classList.remove('hide');
@@ -24,37 +90,6 @@ function showBox() {
   }
 }
 
-function showImage() {
-  const inputFile = document.querySelector('.input--file');
-  const imagePreview = document.querySelector('.image-preview__image');
-  const imageDefaultText = document.querySelector('.image-preview__default-text');
-  const name = document.getElementById('name').value;
-  const surname = document.getElementById('surname').value;
-
-  inputFile.addEventListener('change', function() {
-    const file = this.files[0];
-    const fullName = name + " " + surname;
-
-    if(file) {
-      const reader = new FileReader();
-      imageDefaultText.style.display = 'none';
-      imagePreview.style.display = 'block';
-
-      reader.addEventListener('load', function() {
-        imagePreview.setAttribute('src', this.result);
-        imagePreview.setAttribute('alt', fullName);
-      });
-
-      reader.readAsDataURL(file);
-    } else {
-      imageDefaultText.style.display = null;
-      imagePreview.style.display = null;
-      imagePreview.setAttribute('src', '');
-      imagePreview.setAttribute('alt', '');
-    }
-  });
-}
-
 // function isValidNip(nip) {
 //   if(typeof nip !== 'string')
 //       return false;
@@ -73,9 +108,10 @@ function showImage() {
 // }
 
 const init = function () {
-  showBox();
+  showBtnAnimation();
   showImage();
-  console.log(isValidNip('95-62-360-263'));
+  // showBox();
+  // console.log(isValidNip('95-62-360-263'));
 };
 
 document.addEventListener('DOMContentLoaded', init);

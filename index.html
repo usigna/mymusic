@@ -11,21 +11,39 @@
 </head>
 
 <body>
-  <main class="main">
+  <!-- web accessibility -->
+  <ul class="skip-links wrapper">
+    <li><a href="#main" class="skip-link">Przejdź do treści</a></li>
+    <li><a href="#form" class="skip-link">Przejdź do formularza</a></li>
+  </ul>
+
+  <!-- web accessibility -->
+  <h1 class="sr-only">MyMusic</h1>
+
+  <header class="header">
+    <div class="header__wrapper wrapper">
+      <a href="#" class="logo">
+        <img src="img/mymusic.svg" alt="MyMusic - strona główna" />
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
     <section class="section">
       <div class="section__wrapper wrapper">
-        <h2 class="title">Wprowadź nowego kontrahenta</h2>
-        <form class="form">
-          <div class="left">
+        <h2 class="section__title">Dodaj nowego kontrahenta</h2>
+        <form id="form" class="form">
+          <fieldset class="fieldset text-wrapper">
+            <legend>Podstawowe dane</legend>
             <div class="form__item">
               <label for="name">Imię:</label>
               <input type="text" id="name" class="input" placeholder="np. Maciej"  required />
-              <!-- <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawne imię, np. Maciej</p> -->
+              <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawne imię, np. Maciej</p>
             </div>
             <div class="form__item">
               <label for="surname">Nazwisko:</label>
               <input type="text" id="surname" class="input" placeholder="np. Kowalski" required />
-              <!-- <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawne nazwisko, np. Kowalski</p> -->
+              <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawne nazwisko, np. Kowalski</p>
             </div>
             <div class="form__item">
               <p>Typ konta:</p>
@@ -37,34 +55,40 @@
               <div class="idnumber idnumber--pesel show">
                 <label for="pesel"><span class="text-transform">Pesel</span></label>
                 <input type="number" id="pesel" placeholder="np. 98102087075" class="input" maxlength="11" minlength="11" required/>
-                <!-- <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawny PESEL (11 cyfr)</p> -->
+                <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawny PESEL (11 cyfr)</p>
               </div>
               <div class="idnumber idnumber--nip hide">
                 <label for="nip"><span class="text-transform">Nip</span> (tylko cyfry)</label>
                 <input type="number" id="nip" placeholder="np. 1234563218" class="input" maxlength="10" minlength="10" required />
-                <!-- <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawny NIP (10 cyfr, bez myślników)</p> -->
+                <p class="error"><span class="fas fa-exclamation-circle" aria-hidden="true"></span>Wprowadź poprawny NIP (10 cyfr, bez myślników)</p>
               </div>
             </div>
-          </div>
-          <div class="right">
+          </fieldset>
+          <fieldset class="fieldset image-wrapper">
+            <legend>Zdjęcie</legend>
             <div class="image-preview">
               <img src="" alt="" class="image-preview__image" />
-              <span class="image-preview__default-text">podgląd</span>
             </div>
-            <div class="form__item">
-              <label for="file">Wgraj zdjęcie:</label>
-              <input type="file" accept="image/jpg, image/jpeg" id="file" class="input--file" />
+            <div class="image-file">
+              <input type="file" accept="image/jpg, image/jpeg" id="file" class="file" />
+              <label for="file" class="label-file"><span class="fas fa-file-upload" aria-hidden="true"></span> Dodaj zdjęcie</label>
             </div>
-          </div>
+          </fieldset>
           <div class="button">
-            <button class="btn" type="submit">Dodaj nowego kontrahenta</button>
+            <button class="btn" type="submit">Dodaj</button>
           </div>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- <script src="https://kit.fontawesome.com/ab5a3ecad3.js" crossorigin="anonymous"></script> -->
+  <div class="background">
+    <div class="vinyl-container">
+      <div class="vinyl"></div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/ab5a3ecad3.js" crossorigin="anonymous"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
