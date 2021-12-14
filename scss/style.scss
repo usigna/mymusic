@@ -131,6 +131,10 @@ body {
 }
 
 /* form */
+.section {
+  animation: show 2s ease-in-out;
+}
+
 .form {
   width: 90%;
   text-transform: uppercase;
