@@ -100,6 +100,7 @@ body {
 /* header */
 .header {
   width: 100%;
+  min-height: 98.25px;
   background: $blackColor;
   position: relative;
   animation: size 5s ease-in-out;
@@ -159,6 +160,7 @@ body {
 .form__item,
 .idnumber {
   @include flex(column, flex-start, flex-start);
+  flex-wrap: wrap;
   margin-bottom: 0.5rem;
   @media screen and (min-width: $largeWidth) {
     @include flex(row, flex-start, flex-start);
@@ -178,13 +180,21 @@ body {
 }
 
 .error {
+  width: 100%;
+  font-size: 1.4rem;
+  text-transform: none;
+  color: $redColor;
   display: none;
+  span {
+    margin-right: 0.5rem;
+  }
 }
 
 .image-wrapper {
   width: 25%;
   padding: 2.5rem 0 2.5rem 2.5rem;
   margin-bottom: 1.5rem;
+  background: $whiteColor;
   @media screen and (min-width: $largeWidth) {
     margin-left: 1.5rem;
     margin-bottom: 0;
@@ -372,105 +382,3 @@ body {
     opacity: 0.2;
   }
 }
-
-
-/* form */
-// .form {
-//   background: $whiteColor;
-//   display: flex;
-//   flex-wrap: wrap;
-//   padding: 1rem;
-// }
-
-// .left,
-// .right {
-//   width: 100%;
-
-//   @media screen and (min-width: $largeWidth) {
-//     width: 50%;
-//   }
-// }
-
-// .form__item,
-// .idnumber {
-//   width: 100%;
-//   margin-bottom: 1.5rem;
-//   @include flex(column, flex-start, flex-start);
-// }
-
-// .input {
-//   width: 100%;
-//   max-width: 400px;
-//   margin: 0.5rem 0;
-//   border: 1px solid $greyColor;
-//   padding: 0.5rem 0.2rem;
-
-//   &--file {
-//     margin: 1rem 0;
-//     border: none;
-//   }
-// }
-
-// .error {
-//   color: $redColor;
-//   margin: 0.2rem 0 0;
-//   display: none;
-//   span {
-//     margin-right: 0.5rem;
-//   }
-// }
-
-// .radio {
-//   label {
-//     margin-right: 1rem;
-//   }
-// }
-
-// .image-preview {
-//   width: 250px;
-//   height: 250px;
-//   border: 1px solid $greyColor;
-//   box-shadow: 3px 3px 0 $blackColor;
-//   margin-bottom: 1.5rem;
-//   position: relative;
-//   &__image {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: fill;
-//     display: none;
-//   }
-//   &__default-text {
-//     position: absolute;
-//     margin-top: 125px;
-//     margin-left: 95px;
-//   }
-// }
-
-// .button {
-//   width: 100%;
-//   margin: 2rem 0;
-// }
-
-// .btn {
-//   background: #0161be;
-//   color: $whiteColor;
-//   border: none;
-//   padding: 1.5rem;
-//   letter-spacing: 1.2px;
-//   font-weight: 600;
-//   box-shadow: 3px 3px 0 $blackColor;
-//   transition: all 0.2s;
-
-//   &:hover,
-//   &:focus {
-//     box-shadow: 5px 5px 0 $blackColor;
-//   }
-// }
-
-// .show {
-//   display: flex;
-// }
-
-// .hide {
-//   display: none;
-// }
