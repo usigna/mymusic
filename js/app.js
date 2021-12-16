@@ -19,10 +19,10 @@ function showBtnAnimation() {
 function showImage() {
   const inputFile = document.querySelector('.file');
   const imagePreview = document.querySelector('.image-preview__image');
-  const name = document.getElementById('name').value;
-  const surname = document.getElementById('surname').value;
 
   inputFile.addEventListener('change', function() {
+    const name = document.getElementById('name').value;
+    const surname = document.getElementById('surname').value;
     const file = this.files[0];
     const fullName = name + " " + surname;
 
@@ -32,14 +32,19 @@ function showImage() {
 
       reader.addEventListener('load', function() {
         imagePreview.setAttribute('src', this.result);
-        imagePreview.setAttribute('alt', fullName);
+
+        if (name != '' && surname != '') {
+          imagePreview.setAttribute('alt', fullName);
+        } else {
+          imagePreview.setAttribute('alt', '');
+        }
       });
 
       reader.readAsDataURL(file);
     } else {
       imagePreview.style.display = null;
-      imagePreview.setAttribute('src', '');
-      imagePreview.setAttribute('alt', '');
+      imagePreview.setAttribute('src', 'img/disc.png');
+      imagePreview.setAttribute('alt', 'Płyta winylowa');
     }
   });
 }

@@ -33,6 +33,16 @@
       <div class="section__wrapper wrapper">
         <h2 class="section__title">Dodaj nowego kontrahenta</h2>
         <form id="form" class="form">
+          <fieldset class="fieldset image-wrapper">
+            <legend>Zdjęcie</legend>
+            <div class="image-preview">
+              <img src="img/disc.png" alt="Płyta winylowa" class="image-preview__image" />
+            </div>
+            <div class="image-file">
+              <input type="file" accept="image/jpg, image/jpeg" id="file" class="file" />
+              <label for="file" class="label-file"><span class="fas fa-file-upload" aria-hidden="true"></span> Dodaj zdjęcie</label>
+            </div>
+          </fieldset>
           <fieldset class="fieldset text-wrapper">
             <legend>Podstawowe dane</legend>
             <div class="form__item">
@@ -63,20 +73,23 @@
                 <p class="error"><span class="fas fa-exclamation-triangle" aria-hidden="true"></span>Wprowadź poprawny NIP (10 cyfr, bez myślników)</p>
               </div>
             </div>
+            <div class="button">
+              <button class="btn" type="submit">Dodaj</button>
+            </div>
           </fieldset>
-          <fieldset class="fieldset image-wrapper">
+          <!-- <fieldset class="fieldset image-wrapper">
             <legend>Zdjęcie</legend>
             <div class="image-preview">
-              <img src="" alt="" class="image-preview__image" />
+              <img src="img/disc.png" alt="Płyta winylowa" class="image-preview__image" />
             </div>
             <div class="image-file">
               <input type="file" accept="image/jpg, image/jpeg" id="file" class="file" />
               <label for="file" class="label-file"><span class="fas fa-file-upload" aria-hidden="true"></span> Dodaj zdjęcie</label>
             </div>
-          </fieldset>
-          <div class="button">
+          </fieldset> -->
+          <!-- <div class="button">
             <button class="btn" type="submit">Dodaj</button>
-          </div>
+          </div> -->
         </form>
       </div>
     </section>
