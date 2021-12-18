@@ -328,6 +328,10 @@ body {
     -webkit-animation: btnAnimation 1s linear infinite;
             animation: btnAnimation 1s linear infinite;
   }
+
+  &:focus {
+    border: 2px solid blue;
+  }
 }
 
 .background {
