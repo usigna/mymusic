@@ -92,7 +92,8 @@ body {
   min-height: 98.25px;
   background: $blackColor;
   position: relative;
-  animation: size 5s ease-in-out;
+  -webkit-animation: size 5s ease-in-out;
+          animation: size 5s ease-in-out;
 
   @media screen and (min-width: $largeWidth) {
     width: 95%;
@@ -111,7 +112,8 @@ body {
 
 .header__wrapper {
   padding: 1.5rem 0;
-  animation: show 5s ease-in-out;
+  -webkit-animation: show 5s ease-in-out;
+          animation: show 5s ease-in-out;
 }
 
 .logo {
@@ -123,7 +125,8 @@ body {
 /* form */
 .section {
   padding: 1.5rem 0;
-  animation: show 2s ease-in-out;
+  -webkit-animation: show 2s ease-in-out;
+          animation: show 2s ease-in-out;
 }
 
 .section__wrapper {
@@ -143,7 +146,6 @@ body {
 
 .form {
   width: 90%;
-  text-transform: uppercase;
   @include flex(column, center, center);
   text-align: center;
 
@@ -151,7 +153,8 @@ body {
     width: 80%;
     text-align: left;
     @include flex(row, flex-start, flex-start);
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 
@@ -185,15 +188,21 @@ body {
   }
 
   @media screen and (min-width: $largeWidth) {
-    @include flex(row, flex-start, flex-start);
-    flex-wrap: wrap;
+    @include flex(row, center, flex-start);
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     label {
-      width: 20%;
+      width: 30%;
     }
     input {
-      width: 80%;
+      width: 70%;
     }
   }
+}
+
+.info {
+  color: $greyColor;
+  font-size: 1.4rem;
 }
 
 .radio {
@@ -214,6 +223,10 @@ body {
   }
 }
 
+.error-border {
+  border: 2px solid $redColor;
+}
+
 .image-wrapper {
   width: 25%;
   max-width: 200px;
@@ -230,13 +243,14 @@ body {
 .image-preview {
   width: 180px;
   height: 180px;
-  background: lightgray;
+  background: rgba(192, 192, 192, 0.2);
   margin: 0 0 1.5rem;
   position: relative;
   &__image {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    -o-object-fit: fill;
+       object-fit: fill;
   }
 }
 
@@ -251,7 +265,8 @@ body {
 
 .file + label {
   font-size: 1.25rem;
-  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
   white-space: nowrap;
   display: inline-block;
   overflow: hidden;
@@ -259,7 +274,9 @@ body {
   color: $whiteColor;
   background: $greyColor;
   cursor: pointer;
-  border:  2px solid transparent;
+  border:  3px solid transparent;
+  -webkit-transition: background 0.2s;
+  -o-transition: background 0.2s;
   transition: background 0.2s;
 }
 
@@ -293,7 +310,7 @@ body {
   background: $blackColor;
   color: $whiteColor;
   padding: 1.5rem 3rem;
-  border: none;
+  border:  2px solid transparent;
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
@@ -301,11 +318,15 @@ body {
   span {
     position: absolute;
     background: $blackColor;
+    background: -o-radial-gradient(circle, #323232 0%, rgba(255,255,255,0.5) 100%);
     background: radial-gradient(circle, #323232 0%, rgba(255,255,255,0.5) 100%);
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     pointer-events: none;
     border-radius: 50%;
-    animation: btnAnimation 1s linear infinite;
+    -webkit-animation: btnAnimation 1s linear infinite;
+            animation: btnAnimation 1s linear infinite;
   }
 }
 
@@ -340,11 +361,13 @@ body {
   border: 20px solid $blackColor;
   border-radius: 50%;
   background: rgb(24,22,22);
+  background: -o-radial-gradient(circle, rgba(24,22,22,1) 0%, rgba(0,0,0,1) 60%);
   background: radial-gradient(circle, rgba(24,22,22,1) 0%, rgba(0,0,0,1) 60%);
   position: relative;
   bottom: -300px;
   right: -300px;
-  animation: rotate 5s infinite linear;
+  -webkit-animation: rotate 5s infinite linear;
+          animation: rotate 5s infinite linear;
 
   &::before {
     content: "";
@@ -373,11 +396,26 @@ body {
 }
 
 /* animation */
+@-webkit-keyframes size {
+  0% {
+    width: 45%;
+  } 100% {
+    width: 95%;
+  }
+}
 @keyframes size {
   0% {
     width: 45%;
   } 100% {
     width: 95%;
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity: 0;
+  } 100% {
+    opacity: 1;
   }
 }
 
@@ -389,11 +427,39 @@ body {
   }
 }
 
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  } 100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 @keyframes rotate {
   0% {
-    transform: rotate(0);
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
   } 100% {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes btnAnimation {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0.2;
   }
 }
 

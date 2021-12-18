@@ -49,50 +49,104 @@ function showImage() {
   });
 }
 
-function activeInput() {
-  const radioItems = document.querySelectorAll('.radio input');
-  const pesel = document.querySelector('.pesel');
-  const nip = document.querySelector('.nip');
+function formValidate() {
+  const form = document.getElementById('form');
 
-  radioItems.forEach(item => {
-    item.addEventListener('change', function() {
-      if (item.value == 'person') {
-        setEnabled(pesel, nip);
-      } else {
-        setEnabled(nip, pesel);
-      }
-    });
-  })
-}
+  form.addEventListener('submit', e => {
+    e.preventDefault();
 
-function setEnabled(x, y) {
-  x.setAttribute('enabled', '');
-  x.removeAttribute('disabled', '');
-  y.setAttribute('disabled', '');
-}
+    const name = document.getElementById('name');
+    const surname = document.getElementById('surname');
+    const radioItems = document.querySelectorAll('.radio input');
+    const idnumber = document.getElementById('idnumber');
+    let formErrors = [];
 
-// function isValidNip(nip) {
-//   if(typeof nip !== 'string')
-//       return false;
+    function showError(item) {
+      item.nextElementSibling.style.display = 'block';
+      item.classList.add('error-border');
+      formErrors.push("item");
+    }
 
-//   nip = nip.replace(/[\ \-]/gi, '');
+    if (name.value == '') {
+      showError(name);
+    }
 
-//   let weight = [6, 5, 7, 2, 3, 4, 5, 6, 7];
-//   let sum = 0;
-//   let controlNumber = parseInt(nip.substring(9, 10));
-//   let weightCount = weight.length;
-//   for (let i = 0; i < weightCount; i++) {
-//       sum += (parseInt(nip.substr(i, 1)) * weight[i]);
-//   }
+    if (surname.value == '') {
+      showError(surname);
+    }
+
+    function peselValidate() {
+      if (idnumber.value == '' 
+      || idnumber.value.length != 11 
+      || isNaN(Number(idnumber.value))
+      || idnumber.value.indexOf('.') != -1
+      || idnumber.value.indexOf(',') != -1) {
   
-//   return sum % 11 === controlNumber;
-// }
+        showError(idnumber);
+      }
+    }
+
+    function nipValidate() {
+      if (idnumber.value == '' 
+      || idnumber.value.length != 10 
+      || isNaN(Number(idnumber.value))
+      || idnumber.value.indexOf('.') != -1
+      || idnumber.value.indexOf(',') != -1) {
+  
+        showError(idnumber);
+      }
+    }
+
+    radioItems.forEach(radioItem => {
+
+      if (radioItem.checked) {
+        if (radioItem.value == 'person') {
+          peselValidate();
+        }
+
+        if (radioItem.value == 'company') {
+          nipValidate();
+        }
+      }
+
+      radioItem.addEventListener('change', function() {
+        if (radioItem.value == 'person') {
+          peselValidate();
+        }
+
+        if (radioItem.value == 'company') {
+          nipValidate();
+        }
+      });
+    })
+
+    function removeError(item) {
+      item.addEventListener('change', function() {
+        item.nextElementSibling.style.display = 'none';
+        item.classList.remove('error-border');
+        if(formErrors.includes(item)){
+          let index = formErrors.indexOf(item);
+            formErrors.splice(index, 1);
+          }
+      });
+    }
+
+    removeError(name);
+    removeError(surname);
+    removeError(idnumber);
+    
+
+    if (!formErrors.length) {
+      e.target.submit();
+      alert('Nie znaleziono metody zapisu');
+    }
+  });
+}
 
 const init = function () {
   showBtnAnimation();
   showImage();
-  activeInput();
-  // console.log(isValidNip('95-62-360-263'));
+  formValidate();
 };
 
 document.addEventListener('DOMContentLoaded', init);
